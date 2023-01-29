@@ -28,18 +28,18 @@ function User() {
         try {
           if(!isEdit)
           {
-          await axios.post("http://localhost:5000/user",values,{
+          await axios.post("https://node-class-app.onrender.com/user",values,{
             headers :{
-                Authorization :`${window.localStorage.getItem("token")}`
+              Authorization :`Bearer ${JSON.parse(window.localStorage.getItem("token"))}`
             }
         })
           getUsers();
           alert('User Inserted')
           }else
           {
-          await axios.put(`http://localhost:5000/user/${currentUser._id}`,values,{
+          await axios.put(`https://node-class-app.onrender.com/user/${currentUser._id}`,values,{
             headers :{
-                Authorization :`${window.localStorage.getItem("token")}`
+              Authorization :`Bearer ${JSON.parse(window.localStorage.getItem("token"))}`
             }
         })
           getUsers();
@@ -59,9 +59,9 @@ function User() {
   
     const getUsers = async () =>{
       try {
-        const users= await axios.get("http://localhost:5000/users",{
+        const users= await axios.get("https://node-class-app.onrender.com/users",{
             headers :{
-                Authorization :`${window.localStorage.getItem("token")}`
+                Authorization :`Bearer ${JSON.parse(window.localStorage.getItem("token"))}`
                 
             }
         });
@@ -73,9 +73,9 @@ function User() {
   
       const handleEdit= async (id) => {
       try {
-        const user = await axios.get(`http://localhost:5000/user/${id}`,{
+        const user = await axios.get(`https://node-class-app.onrender.com/user/${id}`,{
           headers :{
-              Authorization :`${window.localStorage.getItem("token")}`
+            Authorization :`Bearer ${JSON.parse(window.localStorage.getItem("token"))}`
           }
       })
         serCurrentUser(user.data)
@@ -93,9 +93,9 @@ function User() {
     };
     const handleDelete= async (id) =>{
       try {
-        await axios.delete(`http://localhost:5000/user/${id}`,{
+        await axios.delete(`https://node-class-app.onrender.com/user/${id}`,{
           headers :{
-              Authorization :`${window.localStorage.getItem("token")}`
+            Authorization :`Bearer ${JSON.parse(window.localStorage.getItem("token"))}`
           }
       })
         getUsers();

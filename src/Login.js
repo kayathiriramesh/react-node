@@ -12,8 +12,8 @@ function Login () {
         },
         onSubmit : async (values) => {
             try{
-                const login = await axios.post("http://localhost:5000/login",values) 
-                window.localStorage.setItem("token",login.data.token)
+                const login = await axios.post("https://node-class-app.onrender.com/login",values) 
+                window.localStorage.setItem("token",JSON.stringify(login.data.token))
                 console.log(login.data.token);
                 navigate("/user")
             }catch(error){
